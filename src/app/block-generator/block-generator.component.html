@@ -1,0 +1,6 @@
+
+<div class="grid">
+    <ng-container >
+        <app-dancing-block *ngFor="let block of blocks; index as i" [myStyle]="calculateClasses(i)" [spritePos]="spritePos" [index]="i" (changeEvent)="outputEvent($event)"></app-dancing-block>
+    </ng-container>
+</div>

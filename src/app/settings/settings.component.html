@@ -1,0 +1,15 @@
+<div class="settings-container">
+    <mat-slide-toggle
+              class="score-text"
+              [color]="color"
+              [checked]="checked"
+              [disabled]="disabled"
+              (change)="setHardMode($event)">
+            Hard Mode!
+    </mat-slide-toggle>
+    <mat-form-field appearance="legacy" class="settings-items-margin">
+        <mat-label>Score To Reach</mat-label>
+        <input (change)="setScore($event)" type="number" min="0" matInput placeholder="Give Me A Number">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+</div>

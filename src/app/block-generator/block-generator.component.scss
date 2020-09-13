@@ -1,0 +1,17 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(11, 9%);
+    grid-template-rows: repeat(3, 33%);
+    padding: 15px;
+}
+/* Scale up the box */
+.active
+.dancing-block {
+    transform: scale(1.1, 1.1);
+  }
+  
+/* Fade in the pseudo-element with the bigger shadow */
+.active
+.dancing-block::after {
+    opacity: 1;
+}

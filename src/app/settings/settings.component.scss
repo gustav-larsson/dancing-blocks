@@ -1,0 +1,19 @@
+:host {
+    position: absolute;
+    right: 20px;
+}
+.score-text {
+    font-weight: bold;
+}
+.settings-container {
+    display: flex;
+    flex-direction: column;
+}
+.settings-items-margin {
+    margin-top: 15px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
