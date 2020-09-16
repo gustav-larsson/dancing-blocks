@@ -39,7 +39,12 @@ export class DancingBlockComponent implements OnInit, OnChanges {
         this.setClass('active', true);
       }
       // When the sprite position is the same as this index set the sprite class to show the sprite;
-      if (change.spritePos && change.spritePos.currentValue === this.index) {
+      /* if (change.spritePos && change.spritePos.currentValue === this.index) {
+        this.iGotTheSprite = true;
+        this.setClass('sprite', false);
+      } */
+      // Try at having 5 sprites activate
+      if (change.spritePos && change.spritePos.currentValue < (this.index + 3) && change.spritePos.currentValue > (this.index - 2)) {
         this.iGotTheSprite = true;
         this.setClass('sprite', false);
       }
@@ -55,7 +60,7 @@ export class DancingBlockComponent implements OnInit, OnChanges {
         setTimeout(() => {
           if (this.iGotTheSprite) {
             this.renderer.removeClass(this.block.nativeElement, 'sprite');
-            this.changeEvent.emit({ newBlock: true });
+            this.changeEvent.emit({ hit: true });
             this.iGotTheSprite = false;
           }
           this.renderer.removeClass(this.block.nativeElement, cssClass);

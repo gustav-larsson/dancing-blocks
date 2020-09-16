@@ -8,6 +8,7 @@ import { Component, OnInit, Output, Input, OnChanges, EventEmitter } from '@angu
 export class SpriteGeneratorComponent implements OnInit {
   private blockAmount = 33; // the number of blocks
   private spritePos: number;
+  private spritePositions: Array<number>;
   private score = 0;
   @Output() public changeEvent = new EventEmitter();
 
@@ -17,10 +18,14 @@ export class SpriteGeneratorComponent implements OnInit {
     // Place the sprite in it's initialy position
     this.newSprite();
   }
+  /* newSprites() {
+    
+  } */
   newSprite() {
     this.spritePos = this.numberGenerator();
     console.log(this.spritePos);
   }
+
   numberGenerator(): number {
     // A random number between 0 and the block amount, makes sure to never give the same number
     const randomNumber = Math.floor((Math.random() * this.blockAmount));
@@ -36,13 +41,14 @@ export class SpriteGeneratorComponent implements OnInit {
   }
 
   outputEvent(event) {
-    if (event.newBlock) {
-      // Get a new random number for the sprite
-      this.newSprite();
-
+    if (event.hit) {
       // Add 1 to the score and emit the score
       this.score++;
       this.changeEvent.emit({ score: this.score });
+    }
+    if (event.newSprites) {
+      // Get a new random number for the sprite
+      this.newSprite();
     } else {
       this.changeEvent.emit(event);
     }

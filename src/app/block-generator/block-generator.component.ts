@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer2, OnDestroy, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Renderer2, OnDestroy, Input, OnChanges, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { isUndefined } from 'util';
+import { DancingBlockComponent } from '../dancing-block/dancing-block.component';
 interface Block {
   id: number;
 }
@@ -11,7 +12,7 @@ interface Block {
 })
 
 
-export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges {
+export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @Input() public blockAmount: number;
   @Input() public spritePos: number;
   @Output() public changeEvent = new EventEmitter();
@@ -26,6 +27,7 @@ export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges {
     IntlBackslash: 22, KeyZ: 23, KeyX: 24, KeyC: 25, KeyV: 26, KeyB: 27, KeyN: 28, KeyM: 29, Comma: 30, Period: 31, Slash: 32
   };
 
+  @ViewChildren(DancingBlockComponent) ViewChildrenBlocks!: QueryList<DancingBlockComponent>;
 
   constructor(private renderer: Renderer2) {}
 
@@ -39,18 +41,41 @@ export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges {
     // create all the dancing blocks
     this.createBlocks();
   }
+  ngAfterViewInit() {
+    this.ViewChildrenBlocks.changes.subscribe((block) => {
+      console.log('block', block);
+    });
+  }
+
   ngOnChanges(changes) {
     if (changes.spritePos) {
       this.sprite = changes.spritePos.currentValue;
     }
   }
+
   ngOnDestroy() {
     // remove listener
     this.globalListenFunc();
   }
+
   outputEvent(event) {
-    this.changeEvent.emit(event);
+    let spritePresent = false;
+    if (event.hit) {
+      // If we hit a block, check if there is any blocks with sprites on them
+      this.changeEvent.emit(event);
+      this.ViewChildrenBlocks.toArray().forEach((block) => {
+        if (block.block.nativeElement.className.includes('sprite')) {
+          spritePresent = true;
+        }
+      });
+      // If no sprites are left, create a new set of sprites
+      if (!spritePresent) {
+        this.changeEvent.emit({ newSprites: true });
+      }
+    }
   }
+
+
   // when I press a key light up a block
   activateBlock(code: string) {
     if (!isUndefined(this.keyboardKeys[code])) {
