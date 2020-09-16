@@ -1,4 +1,6 @@
-# AngularTourOfHeroes
+# DancingBlocks
+
+This is a small game to have fun with your keyboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.8.
 
