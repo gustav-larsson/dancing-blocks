@@ -15,6 +15,8 @@ import { SpriteGeneratorComponent } from './sprite-generator/sprite-generator.co
 import { ScoreTrackerComponent } from './score-tracker/score-tracker.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HighscoreComponent } from './highscore/highscore.component';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     TypingFieldComponent,
     SpriteGeneratorComponent,
     ScoreTrackerComponent,
-    SettingsComponent
+    SettingsComponent,
+    HighscoreComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

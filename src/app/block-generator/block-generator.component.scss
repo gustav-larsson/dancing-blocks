@@ -1,9 +1,16 @@
 .grid {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: grid;
     grid-template-columns: repeat(11, 9%);
     grid-template-rows: repeat(3, 33%);
     padding: 15px;
+    grid-gap: 5% 1%;
+    width: 89%;
 }
+
 /* Scale up the box */
 .active
 .dancing-block {
