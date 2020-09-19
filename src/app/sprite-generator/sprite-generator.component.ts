@@ -43,8 +43,8 @@ export class SpriteGeneratorComponent implements OnInit {
   outputEvent(event) {
     if (event.hit) {
       // Add 1 to the score and emit the score
-      this.score++;
-      this.changeEvent.emit({ score: this.score });
+      //this.score++;
+      this.changeEvent.emit({ score: true });
     }
     if (event.newSprites) {
       // Get a new random number for the sprite

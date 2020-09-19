@@ -1,1 +1,9 @@
-<p>highscore works!</p>
+<!-- <section class="dark"> -->
+    <!-- <h1 class="gradient2" *ngFor="let highscore of highscores" [style.background]="highscore.color">Score goal: {{highscore.score}} Time: {{highscore.time}}</h1> -->
+   <!--  <h1 class="gradient1">{{highscoreDisplay}}</h1> -->
+    <!-- <p class="gradient2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, aut.</p> -->
+<!-- </section> -->
+<section class="highscore-container">
+    <h1 class="highscore-display">{{highscoreDisplay}}</h1>
+    <button mat-raised-button color="primary" class="clear-btn" (click)="clearHighscore()">Clear Highscores</button>
+</section>

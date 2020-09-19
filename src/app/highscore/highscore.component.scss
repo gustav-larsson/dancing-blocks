@@ -1,0 +1,31 @@
+.clear-btn {
+    height: fit-content;
+    margin-top: 28px;
+    position: fixed;
+    font-size: 1vw;
+    margin-left: 25vw;
+}
+.highscore {
+    text-align: center;
+    
+    margin-top: 1px;
+    margin-bottom: 1px;
+    background: -webkit-linear-gradient(#eee, #333);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+section.highscore-container {
+    display: flex;
+    justify-content: center;
+    .highscore-display {
+        white-space: break-spaces;
+        width: fit-content;
+        font-size: 1.5vw;
+        background: -webkit-linear-gradient(rgb(66, 223, 197), rgb(61, 233, 84));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

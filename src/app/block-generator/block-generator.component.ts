@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2, OnDestroy, Input, OnChanges, Output, EventEmitter, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Key } from 'protractor';
 import { isUndefined } from 'util';
 import { DancingBlockComponent } from '../dancing-block/dancing-block.component';
 interface Block {
@@ -34,9 +35,13 @@ export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges, Af
   ngOnInit() {
     // Global key listener to listen to every key press
     this.globalListenFunc = this.renderer.listen('document', 'keypress', e => {
-      this.activateBlock(e.code);
-      this.clicks++;
-      this.changeEvent.emit({ clicks: this.clicks });
+      // On enter click reset the game
+      if (e.code === 'Enter') {
+        console.log('enter', e.code);
+        this.changeEvent.emit({ reset: true });
+      } else {
+        this.activateBlock(e.code);
+      }
     });
     // create all the dancing blocks
     this.createBlocks();
@@ -76,15 +81,21 @@ export class BlockGeneratorComponent implements OnInit, OnDestroy, OnChanges, Af
   }
 
 
-  // when I press a key light up a block
+  // When I press a key light up a block
   activateBlock(code: string) {
     if (!isUndefined(this.keyboardKeys[code])) {
+      // Set the activation id
       this.activateId = this.keyboardKeys[code];
+      // Play an audio que
       const audio = new Audio('./assets/keyTap3.mp3');
       audio.play();
+      // deactivate the key after pressing
       setTimeout(() => {
         this.activateId = null;
       }, 300);
+      // Increase the click amount and emit that you have performed a click
+      this.clicks++;
+      this.changeEvent.emit({ clicks: this.clicks });
     }
   }
 

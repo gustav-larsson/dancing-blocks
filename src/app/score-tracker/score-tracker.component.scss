@@ -1,4 +1,17 @@
 .score {
     text-align: center;
     font-size: 1.5vw;
+    
+}
+.gradient1 {
+    background: -webkit-linear-gradient(rgb(28, 189, 162), rgb(57, 199, 123));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.gradient2 {
+    background: -webkit-linear-gradient(rgb(57, 199, 123), rgb(61, 233, 127));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

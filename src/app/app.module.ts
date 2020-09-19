@@ -17,6 +17,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HighscoreComponent } from './highscore/highscore.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatIconModule,
     MatSlideToggleModule,
-    MatDividerModule
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

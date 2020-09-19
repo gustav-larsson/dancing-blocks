@@ -13,7 +13,7 @@ export class DancingBlockComponent implements OnInit, OnChanges {
       '<', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '-'
     ];
     public hardmode = false;
-    @Input() public myStyle;
+    @Input() public myStyle: boolean;
     @Input() public spritePos: number;
     @Input() public index: number;
     @Output() public changeEvent = new EventEmitter();
